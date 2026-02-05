@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohit Manoharan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- === Navbar === -->
      <header>
         <nav>
-            <h1>Mohit M</h1>
+            <h1>Mohit Manoharan</h1>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -24,7 +24,7 @@
 
      <!-- === Home === -->
      <section id="home">
-        <h1>Home</h1>
+        <!-- <h1>Home</h1> -->
         <h2>Hi, I'm Mohit Manoharan</h2>
         <p> Aspiring Data Analyst | SQL | Python | Tableau | Power BI</p>
      </section>
@@ -51,9 +51,11 @@
 
      <!-- === Experience Section ==== -->
      <section id="experience">
-        <h2>Internship Experience</h1>
-        <h3> Packaged App Development Associate Intern - Accenture </h3>
-        <p>Feb 2025 - June 2025</p> 
+        <h2>Experience</h1>
+        <div class= "experience-header">
+            <h3> Packaged App Development Associate Intern - Accenture </h3>
+            <span class="date">February 2025 - June 2025</span> 
+        </div>
         <p>
             Worked on SAP HANA migration and helped in development of SQL script procedures, optimized performance, designed calculation views, and also learn about use of control tables
         </p>
@@ -62,16 +64,18 @@
      <!-- === Projects Section === -->
      <section id="projects">
         <h2>Projects</h2>
-        
-        <h3>Road Sign Detection and Classification (CNN+YOLO)</h3>
-        <p>Build a hybrid deep learning model using YOLO for detection and CNN for classification of road signs
-            including auditory feedback for real-time alerts.
-        </p>
-
-        <h3>Cloud Data Analytics Pipeline (AWS, Snowflake, PowerBI)</h3>
-        <p> 
-            Designed an end-to-end analytics pipeline by ingesting data into AWS S3, loading it into Snowflake, performing basic SQL-based transformations and building interactive Power BI dashboard.
-        </p>
+        <div class="project-card">
+            <h3>Road Sign Detection and Classification (CNN+YOLO)</h3>
+            <p>Build a hybrid deep learning model using YOLO for detection and CNN for classification of road signs
+                including auditory feedback for real-time alerts.
+            </p>
+        </div>
+        <div class="project-card">
+            <h3>Cloud Data Analytics Pipeline (AWS, Snowflake, PowerBI)</h3>
+            <p> 
+                Designed an end-to-end analytics pipeline by ingesting data into AWS S3, loading it into Snowflake, performing basic SQL-based transformations and building interactive Power BI dashboard.
+            </p>
+        </div>
      </section>
 
      <!-- === Contact Section === -->
@@ -81,10 +85,10 @@
         <p>Location: Hyderabad, India</p>
         <p>Phone: +91 9515102771</p>
         <p>
-            <a href="LINKEDIN LINK"> LinkedIn</a>
+            <a href="https://www.linkedin.com/in/mohit-manoharan-2ba16722a/" class = "linkedin-link"> LinkedIn</a>
         </p>
         <p>
-        <a href="Github repo link"> GitHub</a>
+        <a href="https://github.com/Mohit-Mano06" class="github-link"> GitHub</a>
         </p>
      </section>
 
