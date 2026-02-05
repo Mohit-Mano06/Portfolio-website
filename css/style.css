@@ -143,6 +143,7 @@ section {
 #experience h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    color:#6a0dad;
 }
 
 #experience-header h3 {
@@ -168,9 +169,15 @@ section {
 
 
 /*== Projects ==*/
+
+#projects {
+    max-width: 900px;
+}
+
 #projects h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
+    color:#6a0dad;
 }
 
 .project-card {
@@ -181,7 +188,7 @@ section {
     margin-bottom: 1.5rem;
 }
 
-.project-card h3 {
+.project-card h2 {
     margin-bottom: 0.8rem;
     font-size: 1.2rem;
 }
