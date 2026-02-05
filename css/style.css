@@ -216,50 +216,44 @@ section {
     margin-bottom: 1rem;
 }
 
-#contact p {
-    margin-bottom: 0.6rem;
-    color: #000;
-
+#contact p:last-of-type,
+#contact p:nth-last-of-type(2) {
+    display: inline-block;
+    margin: 0 0.5rem;
 }
 
 #contact a {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
+    border-radius: 500px;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
 }
 
-.linkedin-link {
-    color: #0077cc;
-    font-size: 1.2rem;
-    background-color: #000;
+#contact img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
-.github-link {
-    color: #ffff;
-    font-size: 1.2rem;
-    background-color: #000;
 
-}
 
 .linkedin-link:hover {
-    color: #fff;
-    background-color: #0077cc;
-    border: 1px solid #000;
-    box-shadow: 0 6px 15px rgba(10, 102, 194, 0.4);
-    transform: translateY(-3px);
+    background-color: #fff;
+    border: 1px solid #0a66c2;
+    box-shadow: 0 8px 20px #0a66c2;
+    transform: translateY(-4px);
     transition: all 0.2s ease-in-out;
-    text-decoration: underline;
 }
 
 .github-link:hover {
-    color: #000;
     background-color: #fff;
     border: 1px solid #000;
-    box-shadow: 0 6px 15px rgba(36, 41, 46, 0.4);
-    transform: translateY(-3px);
-    transition: all 0.2s ease-in-out;
-    text-decoration: underline;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px #525252;    
 }
 
 
@@ -303,6 +297,10 @@ section {
 
     .project-card {
         padding: 1.2rem;
+    }
+    #contact img {
+        width: 28px;
+        height: 28px;
     }
 }
 
