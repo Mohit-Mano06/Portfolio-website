@@ -45,6 +45,7 @@ nav a {
 
 nav a:hover {
     color: #6a0dad;
+    /* color: #0a66c2; */
 }
 
 section {
@@ -190,7 +191,7 @@ section {
 .project-card {
     background-color: #ffff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -202,6 +203,7 @@ section {
 
 .project-card p {
     color: #6a0dad;
+    /* color: #000; */
 }
 
 .project-card:hover {
@@ -386,7 +388,7 @@ nav a::after {
     background-color: #6a0dad;
     left: 0;
     bottom: 0.2px;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease-in;
 }
 
 nav a:hover::after {
