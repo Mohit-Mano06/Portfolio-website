@@ -9,6 +9,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     color: #222;
+    overflow: hidden;
 }
 
 header {
@@ -52,6 +53,12 @@ section {
     padding: 4rem 1rem;
 }
 
+
+.section-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
 
 
 /* Home Section */
@@ -240,6 +247,59 @@ section {
     object-fit: contain;
 }
 
+/* GitHub Button Styling */
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff; /* Initial White Background */
+    border: 1px solid #333;
+    width: 48px; /* Collapsed width */
+    padding: 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.github-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    fill: #000; /* Initial Black Icon */
+    transition: transform 0.35s ease, fill 0.35s ease;
+}
+
+.github-text {
+    white-space: nowrap;
+    color: inherit;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Hover Effects */
+.github-btn:hover {
+    width: 160px; 
+    background-color: #000 !important;
+    color: #fff !important; /* Force text color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: #000;
+}
+
+.github-btn:hover .github-icon {
+    fill: #fff !important; /* White Icon on Hover */
+    transform: translateX(0); /* Reset transform if needed */
+}
+
+.github-btn:hover .github-text {
+    color: #fff !important;
+    opacity: 1;
+    transform: translateX(0);
+}
 
 .linkedin-link:hover {
     background-color: #fff;
@@ -304,10 +364,12 @@ section {
     }
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling ======= DISABLED ========
 html {
     scroll-behavior: smooth;
-}
+} 
+
+*/
 
 
 /* Hover Feedback for navbar */
