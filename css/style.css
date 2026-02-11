@@ -115,28 +115,35 @@ section {
     margin-bottom: 1rem;
 }
 
-#skills ul {
-    list-style: none;
+.skills-container {
     display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 6rem;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 120px;
+    margin-top: 30px;
 }
 
-#skills li {
-    background-color: #000;
-    color: #fff;
-    padding: 1rem;
-    border-radius: 6px;
-    font-weight: 300;
+.skill {
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-#skills li:hover {
-    color: #6a0dad;
-    font-weight: bold;
-    background-color: #000;
+.skill img {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
+.skill p {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #000;
+}
+
+.skill img:hover {
+    transform: scale(1.2);
+}
+
+
 
 /*Experience Section*/
 
