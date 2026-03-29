@@ -1,55 +1,143 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav ul li a');
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero");
+  const terminalOutput = document.getElementById("terminal-output");
+  const heroName = document.getElementById("hero-name");
+  const sections = document.querySelectorAll("[data-nav-section]");
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Intersection Observer for highlighting active nav link
-    const observerOptions = {
-        root: null,
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0
-    };
+  const introLines = [
+    "initializing portfolio...",
+    "loading Mohit Manoharan...",
+    "welcome."
+  ];
 
-    const observerCallback = (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    };
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    sections.forEach(section => observer.observe(section));
-
-    // Handle smooth scroll clicks manually to ensure immediate active class update
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            }
-        });
+  const setActiveLink = (id) => {
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("active", isActive);
     });
+  };
 
-    // Special case for scrolling to bottom
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.innerHeight + window.pageYOffset;
-        const pageHeight = document.documentElement.scrollHeight;
+  const createLine = (text) => {
+    const row = document.createElement("div");
+    row.className = "typed-line";
 
-        if (scrollPosition >= pageHeight - 50) { // Increased threshold for better reliability
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#contact') {
-                    link.classList.add('active');
-                }
-            });
+    const prompt = document.createElement("span");
+    prompt.className = "line-label";
+    prompt.textContent = "> ";
+
+    const content = document.createElement("span");
+    content.className = "line-text";
+    row.append(prompt, content);
+    terminalOutput.appendChild(row);
+
+    return typeText(content, text);
+  };
+
+  const typeText = async (node, text) => {
+    node.textContent = "";
+    for (let index = 0; index < text.length; index += 1) {
+      node.textContent += text[index];
+      if (!prefersReducedMotion) {
+        await wait(28);
+      }
+    }
+  };
+
+  const runIntro = async () => {
+    if (prefersReducedMotion) {
+      introLines.forEach((line) => {
+        const row = document.createElement("div");
+        row.className = "typed-line";
+        row.innerHTML = `<span class="line-label">&gt; </span><span class="line-text">${line}</span>`;
+        terminalOutput.appendChild(row);
+      });
+      hero.classList.add("is-typed", "hero-ready");
+      heroName.style.opacity = "1";
+      heroName.style.transform = "translateY(0)";
+      return;
+    }
+
+    for (const line of introLines) {
+      await createLine(line);
+      await wait(220);
+    }
+
+    hero.classList.add("is-typed");
+    await wait(260);
+    hero.classList.add("hero-ready");
+  };
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.getAttribute("id");
+          setActiveLink(sectionId);
+          entry.target.querySelectorAll(".reveal").forEach((el) => {
+            el.classList.add("in-view");
+          });
         }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.2,
+      rootMargin: "-10% 0px -20% 0px",
+    }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) {
+        return;
+      }
+      event.preventDefault();
+      target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+      setActiveLink(target.id);
     });
+  });
+
+  const heroReveal = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll(".reveal").forEach((el) => el.classList.add("in-view"));
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  heroReveal.observe(hero);
+
+  // Light parallax on the hero background. This stays subtle so it never feels busy.
+  let rafId = null;
+  const onPointerMove = (event) => {
+    if (prefersReducedMotion || !hero) {
+      return;
+    }
+
+    const x = (event.clientX / window.innerWidth - 0.5) * 28;
+    const y = (event.clientY / window.innerHeight - 0.5) * 28;
+
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+
+    rafId = requestAnimationFrame(() => {
+      hero.style.setProperty("--mouse-x", `${x}px`);
+      hero.style.setProperty("--mouse-y", `${y}px`);
+    });
+  };
+
+  window.addEventListener("pointermove", onPointerMove, { passive: true });
+
+  runIntro();
 });
