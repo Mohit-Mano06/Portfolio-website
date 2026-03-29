@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const introLines = [
-    "initializing portfolio...",
-    "loading Mohit Manoharan...",
-    "welcome."
+    "booting system...",
+    "loading Mohit.exe...",
+    "initializing components: [████████████████████]",
+    "status: ready",
   ];
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
