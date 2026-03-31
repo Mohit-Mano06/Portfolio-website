@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#d3d3d3"/>
+
+  <!-- Top yellow blocks -->
+  <rect x="50" y="30" width="30" height="30" fill="#FFD700"/>
+  <rect x="120" y="30" width="30" height="30" fill="#FFD700"/>
+
+  <!-- Upper orange -->
+  <rect x="40" y="60" width="60" height="30" fill="#FFA500"/>
+  <rect x="100" y="60" width="60" height="30" fill="#FFA500"/>
+
+  <!-- Middle orange strip -->
+  <rect x="40" y="90" width="120" height="30" fill="#FF8C00"/>
+
+  <!-- Lower orange pillars -->
+  <rect x="40" y="120" width="30" height="30" fill="#FF4500"/>
+  <rect x="80" y="120" width="30" height="30" fill="#FF4500"/>
+  <rect x="120" y="120" width="30" height="30" fill="#FF4500"/>
+
+  <!-- Bottom red blocks -->
+  <rect x="0" y="150" width="80" height="30" fill="#E60000"/>
+  <rect x="120" y="150" width="80" height="30" fill="#E60000"/>
+</svg>
