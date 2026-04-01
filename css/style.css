@@ -197,10 +197,12 @@ a {
 .hero-inner {
   position: relative;
   z-index: 1;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
 }
 
 .terminal-card {
@@ -289,7 +291,10 @@ a {
 }
 
 .hero-copy {
-  padding-left: clamp(0rem, 2vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
 .eyebrow,
@@ -311,7 +316,7 @@ a {
 
 .hero-subtitle {
   max-width: 36rem;
-  margin: 0;
+  margin: 0 auto;
   color: var(--muted);
   font-size: clamp(1.05rem, 2vw, 1.2rem);
   line-height: 1.8;
@@ -321,6 +326,7 @@ a {
   display: flex;
   gap: 0.9rem;
   flex-wrap: wrap;
+  justify-content: center;
   margin-top: 1.9rem;
 }
 

@@ -6,70 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("[data-nav-link]");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const introLines = [
-    "booting system...",
-    "loading Mohit.exe...",
-    "initializing components: [████████████████████]",
-    "status: ready",
-  ];
-
-  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const runIntro = () => {
+    hero.classList.add("is-typed", "hero-ready");
+    if (heroName && prefersReducedMotion) {
+      heroName.style.opacity = "1";
+      heroName.style.transform = "translateY(0)";
+    }
+  };
 
   const setActiveLink = (id) => {
     navLinks.forEach((link) => {
       const isActive = link.getAttribute("href") === `#${id}`;
       link.classList.toggle("active", isActive);
     });
-  };
-
-  const createLine = (text) => {
-    const row = document.createElement("div");
-    row.className = "typed-line";
-
-    const prompt = document.createElement("span");
-    prompt.className = "line-label";
-    prompt.textContent = "> ";
-
-    const content = document.createElement("span");
-    content.className = "line-text";
-    row.append(prompt, content);
-    terminalOutput.appendChild(row);
-
-    return typeText(content, text);
-  };
-
-  const typeText = async (node, text) => {
-    node.textContent = "";
-    for (let index = 0; index < text.length; index += 1) {
-      node.textContent += text[index];
-      if (!prefersReducedMotion) {
-        await wait(28);
-      }
-    }
-  };
-
-  const runIntro = async () => {
-    if (prefersReducedMotion) {
-      introLines.forEach((line) => {
-        const row = document.createElement("div");
-        row.className = "typed-line";
-        row.innerHTML = `<span class="line-label">&gt; </span><span class="line-text">${line}</span>`;
-        terminalOutput.appendChild(row);
-      });
-      hero.classList.add("is-typed", "hero-ready");
-      heroName.style.opacity = "1";
-      heroName.style.transform = "translateY(0)";
-      return;
-    }
-
-    for (const line of introLines) {
-      await createLine(line);
-      await wait(220);
-    }
-
-    hero.classList.add("is-typed");
-    await wait(260);
-    hero.classList.add("hero-ready");
   };
 
   const sectionObserver = new IntersectionObserver(
