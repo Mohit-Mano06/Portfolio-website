@@ -91,3 +91,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   runIntro();
 });
+
+// Global function for the interactive email card
+window.copyEmailToClipboard = async function (event) {
+  event.stopPropagation();
+  
+  const emailText = document.getElementById("email-text")?.innerText || "mohit7052015@gmail.com";
+  const card = document.getElementById("email-contact-card");
+  const toast = document.getElementById("copy-toast");
+  
+  if (!card || !toast) return;
+
+  try {
+    await navigator.clipboard.writeText(emailText);
+    
+    // UI feedback
+    card.classList.add("copied");
+    toast.classList.add("show");
+    
+    // Subtle scale feedback inline
+    card.style.transform = "translateY(0) scale(0.96)";
+    setTimeout(() => {
+      card.style.transform = ""; // let css hover take over again
+    }, 150);
+
+    // Reset success state after a delay
+    setTimeout(() => {
+      card.classList.remove("copied");
+      toast.classList.remove("show");
+    }, 2500);
+    
+  } catch (err) {
+    console.error("Failed to copy email to clipboard", err);
+  }
+};
