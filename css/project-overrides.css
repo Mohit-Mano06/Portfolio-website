@@ -256,34 +256,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.1rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
-.photo-placeholder {
-  width: 5.6rem;
-  height: 5.6rem;
+.hero-photo {
+  width: 11rem;
+  height: 11rem;
   flex-shrink: 0;
-  border-radius: 1.35rem;
-  border: 1px dashed rgba(255, 255, 255, 0.18);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  color: #a1a1aa;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 0.1rem;
-  text-align: center;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  border-radius: 2rem;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.photo-placeholder span {
-  display: block;
-  max-width: 4.5rem;
-  line-height: 1.2;
+.hero-photo:hover {
+  transform: scale(1.05) translateY(-2px);
 }
+
+
 
 @media (max-width: 1024px) {
   .hero-name-row {
@@ -384,9 +376,10 @@ body {
   white-space: nowrap;
 }
 @media (max-width: 768px) {
-  .photo-placeholder {
-    width: 5rem;
-    height: 5rem;
+  .hero-photo {
+    width: 8.5rem;
+    height: 8.5rem;
+    border-radius: 1.5rem;
   }
 }
 
